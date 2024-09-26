@@ -2,8 +2,8 @@ import type { MarkType } from 'prosemirror-model';
 import type { EditorState, Command } from 'prosemirror-state';
 import { toggleMark } from 'prosemirror-commands';
 
-import { isMarkActive } from 'ngx-editor/helpers';
-import { removeLink } from 'ngx-editor/commands';
+import { isMarkActive } from '@davidbbddeveloper/ngx-editor/helpers';
+import { removeLink } from '@davidbbddeveloper/ngx-editor/commands';
 import type { Dispatch } from './types';
 
 const defaultOptions = {
@@ -51,8 +51,7 @@ class Link {
 
       const node = schema.text(text, [schema.marks['link'].create(linkAttrs)]);
 
-      tr.replaceSelectionWith(node, false)
-        .scrollIntoView();
+      tr.replaceSelectionWith(node, false).scrollIntoView();
 
       if (tr.docChanged) {
         dispatch?.(tr);

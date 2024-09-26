@@ -3,7 +3,7 @@ import { EditorState, Plugin, Transaction } from 'prosemirror-state';
 import { EditorProps, EditorView } from 'prosemirror-view';
 import { Observable, Subject } from 'rxjs';
 
-import { isNil } from 'ngx-editor/utils';
+import { isNil } from '@davidbbddeveloper/ngx-editor/utils';
 
 import EditorCommands from './EditorCommands';
 import defautlSchema from './schema';
@@ -26,7 +26,7 @@ interface Options {
   features?: EditorFeatures;
   handleScrollToSelection?: EditorProps['handleScrollToSelection'];
   linkValidationPattern?: string;
-  parseOptions?:ParseOptions;
+  parseOptions?: ParseOptions;
 }
 
 interface EditorFeatures {
@@ -50,7 +50,8 @@ const DEFAULT_OPTIONS: Options = {
   attributes: {},
   features: defaultFeatures,
   handleScrollToSelection: null,
-  linkValidationPattern: '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/??([^#\n\r]*)?#?([^\n\r]*)|(mailto:.*[@].*)',
+  linkValidationPattern:
+    '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/??([^#\n\r]*)?#?([^\n\r]*)|(mailto:.*[@].*)',
 };
 
 class Editor {

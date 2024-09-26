@@ -1,6 +1,6 @@
 import type { EditorState, Transaction, Command } from 'prosemirror-state';
 
-import { clamp } from 'ngx-editor/utils';
+import { clamp } from '@davidbbddeveloper/ngx-editor/utils';
 import { InsertCommand } from './types';
 
 const indentNodeTypes = ['paragraph', 'heading', 'blockquote'];
@@ -11,7 +11,9 @@ const maxIndent = 10;
 
 const udpateIndentLevel = (tr: Transaction, pos: number, method: IndentMethod): boolean => {
   const node = tr.doc.nodeAt(pos);
-  if (!node) { return false; }
+  if (!node) {
+    return false;
+  }
 
   const nodeIndent = node.attrs['indent'] ?? 0;
   const newIndent = clamp(nodeIndent + (method === 'increase' ? 1 : -1), minIndent, maxIndent);

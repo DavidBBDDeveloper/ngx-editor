@@ -1,9 +1,6 @@
-import {
-  Component, Input,
-  OnInit, TemplateRef,
-} from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 
-import { NgxEditorError } from 'ngx-editor/utils';
+import { NgxEditorError } from '@davidbbddeveloper/ngx-editor/utils';
 import { Toolbar, ToolbarItem, ToolbarDropdown, ToolbarLink, ToolbarLinkOptions } from '../../types';
 import { MenuService } from './menu.service';
 import Editor from '../../Editor';
@@ -66,7 +63,6 @@ const DEFAULT_COLOR_PRESETS = [
   styleUrls: ['./menu.component.scss'],
   providers: [MenuService],
 })
-
 export class MenuComponent implements OnInit {
   @Input() toolbar: Toolbar = TOOLBAR_MINIMAL;
   @Input() colorPresets: string[] = DEFAULT_COLOR_PRESETS;
@@ -92,20 +88,13 @@ export class MenuComponent implements OnInit {
     'subscript',
   ];
 
-  insertCommands: ToolbarItem[] = [
-    'horizontal_rule',
-    'format_clear',
-    'indent',
-    'outdent',
-    'undo',
-    'redo',
-  ];
+  insertCommands: ToolbarItem[] = ['horizontal_rule', 'format_clear', 'indent', 'outdent', 'undo', 'redo'];
 
   iconContainerClass = ['NgxEditor__MenuItem', 'NgxEditor__MenuItem--IconContainer'];
   dropdownContainerClass = ['NgxEditor__Dropdown'];
   seperatorClass = ['NgxEditor__Seperator'];
 
-  constructor(private menuService: MenuService) { }
+  constructor(private menuService: MenuService) {}
 
   get presets(): string[][] {
     const col = 8;
@@ -147,15 +136,13 @@ export class MenuComponent implements OnInit {
 
     // NOTE: it is not sufficient to check for a `link` property
     // as String.prototype.link is a valid (although deprecated) method
-    return typeof item === 'object'
-      && typeof (item as ToolbarLink)?.link === 'object';
+    return typeof item === 'object' && typeof (item as ToolbarLink)?.link === 'object';
   }
 
   isLinkWithOptions(item: ToolbarItem): boolean {
     // NOTE: it is not sufficient to check for a `link` property
     // as String.prototype.link is a valid (although deprecated) method
-    return typeof item === 'object'
-      && typeof (item as ToolbarLink)?.link === 'object';
+    return typeof item === 'object' && typeof (item as ToolbarLink)?.link === 'object';
   }
 
   getLinkOptions(item: ToolbarItem): Partial<ToolbarLinkOptions> {

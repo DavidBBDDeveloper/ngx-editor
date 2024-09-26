@@ -1,11 +1,10 @@
 import {
-  Component, ElementRef,
-  HostListener, Input, OnDestroy, OnInit,
+  Component, ElementRef, HostListener, Input, OnDestroy, OnInit,
 } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditorView } from 'prosemirror-view';
 import { Observable, Subscription } from 'rxjs';
-import { uniq } from 'ngx-editor/utils';
+import { uniq } from '@davidbbddeveloper/ngx-editor/utils';
 
 import { NgxEditorService } from '../../../editor.service';
 import { MenuService } from '../menu.service';
@@ -25,11 +24,11 @@ const DEFAULT_LINK_OPTIONS: LinkOptions = {
   templateUrl: './link.component.html',
   styleUrls: ['./link.component.scss'],
 })
-
 export class LinkComponent implements OnInit, OnDestroy {
   @Input({
     transform: (value: Partial<LinkOptions>) => ({ ...DEFAULT_LINK_OPTIONS, ...value }),
-  }) options: Partial<LinkOptions> = DEFAULT_LINK_OPTIONS;
+  })
+    options: Partial<LinkOptions> = DEFAULT_LINK_OPTIONS;
 
   showPopup = false;
   isActive = false;
@@ -44,7 +43,7 @@ export class LinkComponent implements OnInit, OnDestroy {
     private el: ElementRef,
     private ngxeService: NgxEditorService,
     private menuService: MenuService,
-  ) { }
+  ) {}
 
   get icon(): HTML {
     return this.ngxeService.getIcon(this.isActive ? 'unlink' : 'link');
@@ -100,7 +99,7 @@ export class LinkComponent implements OnInit, OnDestroy {
     }
   }
 
-  onTogglePopupMouseClick(e:MouseEvent): void {
+  onTogglePopupMouseClick(e: MouseEvent): void {
     if (e.button !== 0) {
       return;
     }
@@ -113,7 +112,9 @@ export class LinkComponent implements OnInit, OnDestroy {
   }
 
   private setText = () => {
-    const { state: { selection, doc } } = this.editorView;
+    const {
+      state: { selection, doc },
+    } = this.editorView;
     const { empty, from, to } = selection;
     const selectedText = !empty ? doc.textBetween(from, to) : '';
 

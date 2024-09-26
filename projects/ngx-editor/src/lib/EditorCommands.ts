@@ -1,12 +1,9 @@
 import { EditorState, Selection, Transaction } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
-import {
-  chainCommands, createParagraphNear, liftEmptyBlock,
-  newlineInCode, splitBlock,
-} from 'prosemirror-commands';
+import { chainCommands, createParagraphNear, liftEmptyBlock, newlineInCode, splitBlock } from 'prosemirror-commands';
 import { DOMParser } from 'prosemirror-model';
 
-import { NgxEditorError } from 'ngx-editor/utils';
+import { NgxEditorError } from '@davidbbddeveloper/ngx-editor/utils';
 import MarkCommand from './commands/Mark';
 import ListCommand from './commands/ListItem';
 import LinkCommand, { LinkAttrs } from './commands/Link';
@@ -67,17 +64,14 @@ class EditorCommands {
     const forceEmit = !this.view.state.doc.eq(this.state.doc);
     this.view.updateState(this.state);
 
-    const tr = this.tr
-      .setMeta('FORCE_EMIT', forceEmit);
+    const tr = this.tr.setMeta('FORCE_EMIT', forceEmit);
 
     this.view.dispatch(tr);
     return true;
   }
 
   focus(position: FocusPosition = 'end'): this {
-    const selection = position === 'start'
-      ? Selection.atStart(this.state.doc)
-      : Selection.atEnd(this.state.doc);
+    const selection = position === 'start' ? Selection.atStart(this.state.doc) : Selection.atEnd(this.state.doc);
 
     this.tr.setSelection(selection);
     this.applyTrx();
@@ -245,7 +239,7 @@ class EditorCommands {
     const { from, to } = selection;
 
     const element = document.createElement('div');
-    element.innerHTML = isString(html) ? (html as string).trim() : html as any;
+    element.innerHTML = isString(html) ? (html as string).trim() : (html as any);
     const slice = DOMParser.fromSchema(schema).parseSlice(element);
 
     const transaction = tr.replaceRange(from, to, slice);

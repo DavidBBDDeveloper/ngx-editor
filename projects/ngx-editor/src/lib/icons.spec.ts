@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { NgxEditorModule } from 'ngx-editor';
+import { NgxEditorModule } from '@davidbbddeveloper/ngx-editor';
 import Editor from './Editor';
 
 describe('NgxEditorModule', () => {
@@ -18,9 +18,7 @@ describe('NgxEditorModule', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [
-        TestComponent,
-      ],
+      declarations: [TestComponent],
       imports: [
         NgxEditorModule.forRoot({
           icons: {

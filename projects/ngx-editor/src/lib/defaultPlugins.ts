@@ -5,11 +5,16 @@ import { toggleMark, baseKeymap, chainCommands, exitCode } from 'prosemirror-com
 import { splitListItem, liftListItem, sinkListItem } from 'prosemirror-schema-list';
 import { history, undo, redo } from 'prosemirror-history';
 import {
-  inputRules, wrappingInputRule, textblockTypeInputRule,
-  smartQuotes, emDash, ellipsis, InputRule,
+  inputRules,
+  wrappingInputRule,
+  textblockTypeInputRule,
+  smartQuotes,
+  emDash,
+  ellipsis,
+  InputRule,
 } from 'prosemirror-inputrules';
 
-import { markInputRule } from 'ngx-editor/helpers';
+import { markInputRule } from '@davidbbddeveloper/ngx-editor/helpers';
 
 interface Options {
   history: boolean;
@@ -21,9 +26,7 @@ interface ShortcutOptions {
   history: boolean;
 }
 
-const isMacOs = typeof navigator !== 'undefined'
-  ? (/Mac/).test(navigator.platform)
-  : false;
+const isMacOs = typeof navigator !== 'undefined' ? (/Mac/).test(navigator.platform) : false;
 
 // Input rules ref: https://github.com/ProseMirror/prosemirror-example-setup/
 
@@ -67,11 +70,9 @@ const codeBlockRule = (nodeType: NodeType): InputRule => {
 // the start of a textblock into a heading whose level corresponds to
 // the number of `#` signs.
 const headingRule = (nodeType: NodeType, maxLevel: number): InputRule => {
-  return textblockTypeInputRule(
-    new RegExp(`^(#{1,${maxLevel}})\\s$`),
-    nodeType,
-    (match) => ({ level: match[1].length }),
-  );
+  return textblockTypeInputRule(new RegExp(`^(#{1,${maxLevel}})\\s$`), nodeType, (match) => ({
+    level: match[1].length,
+  }));
 };
 
 // : (MarkType) → InputRule

@@ -1,8 +1,8 @@
 import type { MarkType } from 'prosemirror-model';
 import type { EditorState, Command } from 'prosemirror-state';
 
-import { getSelectionMarks, isMarkActive } from 'ngx-editor/helpers';
-import { applyMark, removeMark } from 'ngx-editor/commands';
+import { getSelectionMarks, isMarkActive } from '@davidbbddeveloper/ngx-editor/helpers';
+import { applyMark, removeMark } from '@davidbbddeveloper/ngx-editor/commands';
 
 import type { Dispatch } from './types';
 
@@ -37,7 +37,7 @@ class TextColor {
 
       const { from, to, empty } = selection;
 
-      if (!empty && (from + 1 === to)) {
+      if (!empty && from + 1 === to) {
         const node = doc.nodeAt(from);
         if (node?.isAtom && !node.isText && node.isLeaf) {
           // An atomic node (e.g. Image) is selected.

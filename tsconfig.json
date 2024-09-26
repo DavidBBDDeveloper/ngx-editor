@@ -12,24 +12,12 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "paths": {
-      "ngx-editor": [
-        "./dist/ngx-editor"
-      ],
-      "ngx-editor/utils": [
-        "./dist/ngx-editor/utils"
-      ],
-      "ngx-editor/schema": [
-        "./dist/ngx-editor/schema"
-      ],
-      "ngx-editor/commands": [
-        "./dist/ngx-editor/commands"
-      ],
-      "ngx-editor/input-rules": [
-        "./dist/ngx-editor/input-rules"
-      ],
-      "ngx-editor/helpers": [
-        "./dist/ngx-editor/helpers"
-      ],
+      "@davidbbddeveloper/ngx-editor": ["./dist/ngx-editor"],
+      "@davidbbddeveloper/ngx-editor/utils": ["./dist/ngx-editor/utils"],
+      "@davidbbddeveloper/ngx-editor/schema": ["./dist/ngx-editor/schema"],
+      "@davidbbddeveloper/ngx-editor/commands": ["./dist/ngx-editor/commands"],
+      "@davidbbddeveloper/ngx-editor/input-rules": ["./dist/ngx-editor/input-rules"],
+      "@davidbbddeveloper/ngx-editor/helpers": ["./dist/ngx-editor/helpers"]
     },
     "esModuleInterop": true,
     "sourceMap": true,
@@ -39,10 +27,7 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

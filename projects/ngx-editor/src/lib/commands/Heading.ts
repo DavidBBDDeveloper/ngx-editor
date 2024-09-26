@@ -2,7 +2,7 @@ import type { NodeType, Node as ProseMirrorNode } from 'prosemirror-model';
 import type { EditorState, Transaction, Command } from 'prosemirror-state';
 import { setBlockType } from 'prosemirror-commands';
 
-import { getSelectionNodes } from 'ngx-editor/helpers';
+import { getSelectionNodes } from '@davidbbddeveloper/ngx-editor/helpers';
 
 import { ToggleCommand } from './types';
 
@@ -59,11 +59,7 @@ class Heading implements ToggleCommand {
       return false;
     }
 
-    const supportedNodes = [
-      type,
-      schema.nodes['text'],
-      schema.nodes['blockquote'],
-    ];
+    const supportedNodes = [type, schema.nodes['text'], schema.nodes['blockquote']];
 
     // heading is a text node
     // don't mark as active when it has more nodes

@@ -1,12 +1,9 @@
-import {
-  Component, ElementRef,
-  HostListener, OnDestroy, OnInit,
-} from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NodeSelection } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
 import { Observable, Subscription } from 'rxjs';
-import { uniq } from 'ngx-editor/utils';
+import { uniq } from '@davidbbddeveloper/ngx-editor/utils';
 
 import { NgxEditorService } from '../../../editor.service';
 import { MenuService } from '../menu.service';
@@ -39,7 +36,7 @@ export class ImageComponent implements OnInit, OnDestroy {
     private el: ElementRef,
     private ngxeService: NgxEditorService,
     private menuService: MenuService,
-  ) { }
+  ) {}
 
   get icon(): HTML {
     return this.ngxeService.getIcon('image');
@@ -55,7 +52,7 @@ export class ImageComponent implements OnInit, OnDestroy {
     }
   }
 
-  getId(name:string): string {
+  getId(name: string): string {
     return `${name}-${this.componentId}`;
   }
 
@@ -80,7 +77,7 @@ export class ImageComponent implements OnInit, OnDestroy {
     }
   }
 
-  onTogglePopupMouseClick(e:MouseEvent): void {
+  onTogglePopupMouseClick(e: MouseEvent): void {
     if (e.button !== 0) {
       return;
     }
