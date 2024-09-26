@@ -34,5 +34,8 @@
     "prosemirror-state": "^1.4.3",
     "prosemirror-view": "^1.34.1",
     "tslib": "^2.3.0"
+  },
+  "publishConfig": {
+    "@davidbbddeveloper:registry": "https://npm.pkg.github.com"
   }
 }

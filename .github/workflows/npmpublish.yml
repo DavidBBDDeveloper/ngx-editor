@@ -28,8 +28,8 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
+      packages: write
       contents: read
-      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -37,11 +37,10 @@ jobs:
         with:
           node-version: ${{env.NODE_VERSION}}
           registry-url: https://npm.pkg.github.com/
-          cache: npm
 
       - run: npm ci
       - run: npm run build:lib
 
-      - run: npm publish dist/ngx-editor/ --access public
+      - run: npm publish dist/ngx-editor/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
