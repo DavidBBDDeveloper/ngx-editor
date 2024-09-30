@@ -1,13 +1,9 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": ["projects/**/*"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "extends": [
         "pegasus",
         "pegasus/typescript",
@@ -15,10 +11,7 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        "max-params": [
-          "error",
-          4
-        ],
+        "max-params": ["error", 4],
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -38,9 +31,7 @@
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
+      "files": ["*.html"],
       "extends": [
         "plugin:@angular-eslint/template/recommended",
         "plugin:@angular-eslint/template/accessibility"
@@ -49,39 +40,21 @@
     },
     {
       "files": "scripts/**/*.js",
-      "extends": [
-        "pegasus",
-        "pegasus/node"
-      ],
+      "extends": ["pegasus", "pegasus/node"],
       "rules": {
         "no-console": "off"
       }
     },
     {
-      "files": [
-        "docs/**/*.ts",
-        "docs/**/*.tsx"
-      ],
+      "files": ["docs/**/*.ts", "docs/**/*.tsx"],
       "parserOptions": {
-        "project": [
-          "tsconfig.json"
-        ]
+        "project": ["tsconfig.json"]
       },
-      "extends": [
-        "pegasus",
-        "pegasus/typescript",
-        "pegasus/react"
-      ]
+      "extends": ["pegasus", "pegasus/typescript", "pegasus/react"]
     },
     {
-      "files": [
-        "docs/**/*.js"
-      ],
-      "extends": [
-        "pegasus",
-        "pegasus/node",
-        "pegasus/browser"
-      ]
+      "files": ["docs/**/*.js"],
+      "extends": ["pegasus", "pegasus/node", "pegasus/browser"]
     }
   ]
 }

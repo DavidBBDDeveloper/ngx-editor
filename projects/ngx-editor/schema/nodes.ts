@@ -1,4 +1,8 @@
-import { DOMOutputSpec, Node as ProseMirrorNode, NodeSpec } from 'prosemirror-model';
+import {
+  DOMOutputSpec,
+  Node as ProseMirrorNode,
+  NodeSpec,
+} from 'prosemirror-model';
 import * as sl from 'prosemirror-schema-list';
 
 import { toStyleString } from '@davidbbddeveloper/ngx-editor/utils';

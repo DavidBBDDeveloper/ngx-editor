@@ -16,7 +16,9 @@ const cleanObject = (obj: Record<string, any>): Record<string, any> => {
 
 const toStyleString = (obj: Partial<CSSStyleDeclaration>): string => {
   const styles = cleanObject(obj);
-  return Object.entries(styles).map(([k, v]) => `${camelToDashed(k)}:${v}`).join(';');
+  return Object.entries(styles)
+    .map(([k, v]) => `${camelToDashed(k)}:${v}`)
+    .join(';');
 };
 
 export default toStyleString;

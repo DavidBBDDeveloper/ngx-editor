@@ -1,12 +1,23 @@
 import {
-  Component, ElementRef, HostBinding, HostListener, Input, OnDestroy, OnInit,
+  Component,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
 } from '@angular/core';
 import { NodeSelection } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
 import { asyncScheduler, fromEvent, Subscription } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 import type { VirtualElement } from '@floating-ui/core';
-import { computePosition, detectOverflow, offset, autoPlacement } from '@floating-ui/dom';
+import {
+  computePosition,
+  detectOverflow,
+  offset,
+  autoPlacement,
+} from '@floating-ui/dom';
 
 import { NgxEditorError } from '@davidbbddeveloper/ngx-editor/utils';
 import Editor from '../../../Editor';
@@ -47,7 +58,9 @@ export class FloatingMenuComponent implements OnInit, OnDestroy {
   private dragging = false;
   private resizeSubscription: Subscription;
 
-  @HostListener('document:mousedown', ['$event']) onMouseDown(e: MouseEvent): void {
+  @HostListener('document:mousedown', ['$event']) onMouseDown(
+    e: MouseEvent,
+  ): void {
     const target = e.target as Node;
 
     if (this.el.nativeElement.contains(target) && target.nodeName !== 'INPUT') {
@@ -58,7 +71,9 @@ export class FloatingMenuComponent implements OnInit, OnDestroy {
     this.dragging = true;
   }
 
-  @HostListener('document:keydown', ['$event']) onKeyDown(e: KeyboardEvent): void {
+  @HostListener('document:keydown', ['$event']) onKeyDown(
+    e: KeyboardEvent,
+  ): void {
     const target = e.target as Node;
 
     if (target.nodeName === 'INPUT') {
@@ -108,7 +123,9 @@ export class FloatingMenuComponent implements OnInit, OnDestroy {
     this.showMenu = true;
   }
 
-  private async calculateBubblePosition(view: EditorView): Promise<BubblePosition> {
+  private async calculateBubblePosition(
+    view: EditorView,
+  ): Promise<BubblePosition> {
     const {
       state: { selection },
     } = view;
@@ -143,46 +160,50 @@ export class FloatingMenuComponent implements OnInit, OnDestroy {
     // the floating bubble itself
     const bubbleEl = this.el.nativeElement;
 
-    const { x: left, y: top } = await computePosition(selectionElement, bubbleEl, {
-      placement: 'top',
-      middleware: [
-        offset(5),
-        this.autoPlace
-          && autoPlacement({
-            boundary: view.dom,
-            padding: 5,
-            allowedPlacements: ['top', 'bottom'],
-          }),
-        {
-          // prevent overflow on right and left side
-          // since only top and bottom placements are allowed
-          // autoplacement can't handle overflows on the right and left
-          name: 'overflowMiddleware',
-          async fn(middlewareArgs) {
-            const overflow = await detectOverflow(middlewareArgs, {
+    const { x: left, y: top } = await computePosition(
+      selectionElement,
+      bubbleEl,
+      {
+        placement: 'top',
+        middleware: [
+          offset(5),
+          this.autoPlace
+            && autoPlacement({
               boundary: view.dom,
               padding: 5,
-            });
+              allowedPlacements: ['top', 'bottom'],
+            }),
+          {
+            // prevent overflow on right and left side
+            // since only top and bottom placements are allowed
+            // autoplacement can't handle overflows on the right and left
+            name: 'overflowMiddleware',
+            async fn(middlewareArgs) {
+              const overflow = await detectOverflow(middlewareArgs, {
+                boundary: view.dom,
+                padding: 5,
+              });
 
-            // overflows left
-            if (overflow.left > 0) {
-              return {
-                x: middlewareArgs.x + overflow.left,
-              };
-            }
+              // overflows left
+              if (overflow.left > 0) {
+                return {
+                  x: middlewareArgs.x + overflow.left,
+                };
+              }
 
-            // overflows right
-            if (overflow.right > 0) {
-              return {
-                x: middlewareArgs.x - overflow.right,
-              };
-            }
+              // overflows right
+              if (overflow.right > 0) {
+                return {
+                  x: middlewareArgs.x - overflow.right,
+                };
+              }
 
-            return {};
+              return {};
+            },
           },
-        },
-      ].filter(Boolean),
-    });
+        ].filter(Boolean),
+      },
+    );
 
     return {
       left,
@@ -234,7 +255,9 @@ export class FloatingMenuComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (!this.editor) {
-      throw new NgxEditorError('Required editor instance to initialize floating menu component');
+      throw new NgxEditorError(
+        'Required editor instance to initialize floating menu component',
+      );
     }
 
     this.updateSubscription = this.editor.update.subscribe((view) => {
@@ -242,7 +265,9 @@ export class FloatingMenuComponent implements OnInit, OnDestroy {
     });
 
     this.resizeSubscription = fromEvent(window, 'resize')
-      .pipe(throttleTime(500, asyncScheduler, { leading: true, trailing: true }))
+      .pipe(
+        throttleTime(500, asyncScheduler, { leading: true, trailing: true }),
+      )
       .subscribe(() => {
         this.useUpdate();
       });

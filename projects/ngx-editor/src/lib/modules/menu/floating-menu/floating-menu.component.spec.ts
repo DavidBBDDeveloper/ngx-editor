@@ -13,15 +13,9 @@ describe('FloatingMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        FloatingMenuComponent,
-        BubbleComponent,
-      ],
-      providers: [
-        SanitizeHtmlPipe,
-      ],
-    })
-      .compileComponents();
+      declarations: [FloatingMenuComponent, BubbleComponent],
+      providers: [SanitizeHtmlPipe],
+    }).compileComponents();
   });
 
   beforeEach(() => {

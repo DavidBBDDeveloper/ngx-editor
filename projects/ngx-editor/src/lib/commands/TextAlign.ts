@@ -15,7 +15,10 @@ class TextAlign implements ToggleCommand {
   }
 
   toggle(): Command {
-    return (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
+    return (
+      state: EditorState,
+      dispatch?: (tr: Transaction) => void,
+    ): boolean => {
       const { doc, selection, tr, schema } = state;
       const { from, to } = selection;
 
@@ -23,7 +26,11 @@ class TextAlign implements ToggleCommand {
 
       doc.nodesBetween(from, to, (node, pos) => {
         const nodeType = node.type;
-        if ([schema.nodes['paragraph'], schema.nodes['heading']].includes(nodeType)) {
+        if (
+          [schema.nodes['paragraph'], schema.nodes['heading']].includes(
+            nodeType,
+          )
+        ) {
           applicable = true;
           const align = node.attrs['align'] === this.align ? null : this.align;
           tr.setNodeMarkup(pos, nodeType, { ...node.attrs, align });

@@ -84,7 +84,12 @@ Then in HTML
 ```html
 <div class="NgxEditor__Wrapper">
   <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
-  <ngx-editor [editor]="editor" [ngModel]="html" [disabled]="false" [placeholder]="'Type here...'"></ngx-editor>
+  <ngx-editor
+    [editor]="editor"
+    [ngModel]="html"
+    [disabled]="false"
+    [placeholder]="'Type here...'"
+  ></ngx-editor>
 </div>
 ```
 

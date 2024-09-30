@@ -1,6 +1,10 @@
 import {
-  Component, ElementRef,
-  HostListener, Input, OnDestroy, OnInit,
+  Component,
+  ElementRef,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
 } from '@angular/core';
 import { EditorView } from 'prosemirror-view';
 import { Observable, Subscription } from 'rxjs';
@@ -31,7 +35,7 @@ export class DropdownComponent implements OnInit, OnDestroy {
     private ngxeService: NgxEditorService,
     private menuService: MenuService,
     private el: ElementRef,
-  ) { }
+  ) {}
 
   get isSelected(): boolean {
     return Boolean(this.activeItem || this.isDropdownOpen);
@@ -41,7 +45,9 @@ export class DropdownComponent implements OnInit, OnDestroy {
     return this.disabledItems.length === this.items.length;
   }
 
-  @HostListener('document:mousedown', ['$event.target']) onDocumentClick(target: Node): void {
+  @HostListener('document:mousedown', ['$event.target']) onDocumentClick(
+    target: Node,
+  ): void {
     if (!this.el.nativeElement.contains(target) && this.isDropdownOpen) {
       this.isDropdownOpen = false;
     }
@@ -129,9 +135,11 @@ export class DropdownComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.editorView = this.menuService.editor.view;
 
-    this.updateSubscription = this.menuService.editor.update.subscribe((view: EditorView) => {
-      this.update(view);
-    });
+    this.updateSubscription = this.menuService.editor.update.subscribe(
+      (view: EditorView) => {
+        this.update(view);
+      },
+    );
   }
 
   ngOnDestroy(): void {

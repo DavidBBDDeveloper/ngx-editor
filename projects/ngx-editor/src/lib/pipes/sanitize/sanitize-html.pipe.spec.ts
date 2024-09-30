@@ -6,9 +6,7 @@ import { SanitizeHtmlPipe } from './sanitize-html.pipe';
 describe('SanitizeHtmlPipe', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      providers: [
-        BrowserModule,
-      ],
+      providers: [BrowserModule],
     }).compileComponents();
   });
 

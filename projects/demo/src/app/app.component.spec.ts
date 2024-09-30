@@ -13,7 +13,13 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormsModule, ReactiveFormsModule, NgxEditorModule, AppComponent, CustomMenuComponent],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgxEditorModule,
+        AppComponent,
+        CustomMenuComponent,
+      ],
     }).compileComponents();
   });
 

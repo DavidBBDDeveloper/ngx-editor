@@ -6,10 +6,8 @@ import { HTML, isTrustedHtml } from '../../trustedTypesUtil';
 @Pipe({
   name: 'sanitizeHtml',
 })
-
 export class SanitizeHtmlPipe implements PipeTransform {
-  constructor(private sanitizer: DomSanitizer) {
-  }
+  constructor(private sanitizer: DomSanitizer) {}
 
   transform(value: HTML): SafeHtml | TrustedHTML {
     if (isTrustedHtml(value)) {

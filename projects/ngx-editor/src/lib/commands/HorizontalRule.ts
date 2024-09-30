@@ -7,7 +7,10 @@ import { InsertCommand } from './types';
 
 class HorizontalRule implements InsertCommand {
   insert(): Command {
-    return (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
+    return (
+      state: EditorState,
+      dispatch?: (tr: Transaction) => void,
+    ): boolean => {
       const { schema, tr } = state;
 
       const type: NodeType = schema.nodes['horizontal_rule'];

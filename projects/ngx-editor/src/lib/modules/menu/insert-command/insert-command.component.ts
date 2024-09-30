@@ -13,7 +13,6 @@ import { HTML } from '../../../trustedTypesUtil';
   templateUrl: './insert-command.component.html',
   styleUrls: ['./insert-command.component.scss'],
 })
-
 export class InsertCommandComponent implements OnInit, OnDestroy {
   @Input() toolbarItem: ToolbarItem;
 
@@ -29,7 +28,7 @@ export class InsertCommandComponent implements OnInit, OnDestroy {
   constructor(
     private ngxeService: NgxEditorService,
     private menuService: MenuService,
-  ) { }
+  ) {}
 
   onMouseClick(e: MouseEvent): void {
     e.preventDefault();
@@ -66,9 +65,11 @@ export class InsertCommandComponent implements OnInit, OnDestroy {
 
     this.editorView = this.menuService.editor.view;
 
-    this.updateSubscription = this.menuService.editor.update.subscribe((view: EditorView) => {
-      this.update(view);
-    });
+    this.updateSubscription = this.menuService.editor.update.subscribe(
+      (view: EditorView) => {
+        this.update(view);
+      },
+    );
   }
 
   ngOnDestroy(): void {

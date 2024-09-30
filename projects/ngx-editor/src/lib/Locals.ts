@@ -51,7 +51,9 @@ export type LocalsKeys = keyof typeof defaults;
 class Locals {
   locals = defaults;
 
-  constructor(newLocals: Partial<Record<LocalsKeys, string | Observable<string>>> = {}) {
+  constructor(
+    newLocals: Partial<Record<LocalsKeys, string | Observable<string>>> = {},
+  ) {
     this.locals = { ...defaults, ...newLocals };
   }
 

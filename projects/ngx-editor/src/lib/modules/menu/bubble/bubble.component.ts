@@ -15,7 +15,10 @@ import { NgxEditorService } from '../../../editor.service';
   styleUrls: ['./bubble.component.scss'],
 })
 export class BubbleComponent implements OnInit, OnDestroy {
-  constructor(private sanitizeHTML: SanitizeHtmlPipe, private ngxeService: NgxEditorService) { }
+  constructor(
+    private sanitizeHTML: SanitizeHtmlPipe,
+    private ngxeService: NgxEditorService,
+  ) {}
 
   private get view(): EditorView {
     return this.editor.view;
@@ -96,10 +99,9 @@ export class BubbleComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.updateSubscription = this.editor.update
-      .subscribe((view) => {
-        this.update(view);
-      });
+    this.updateSubscription = this.editor.update.subscribe((view) => {
+      this.update(view);
+    });
   }
 
   ngOnDestroy(): void {

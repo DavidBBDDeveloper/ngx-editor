@@ -25,7 +25,9 @@ export class NgxEditorService {
   }
 }
 
-export const provideMyServiceOptions = (config?: NgxEditorConfig): NgxEditorServiceConfig => {
+export const provideMyServiceOptions = (
+  config?: NgxEditorConfig,
+): NgxEditorServiceConfig => {
   return {
     locals: config.locals ?? {},
     icons: config.icons ?? {},

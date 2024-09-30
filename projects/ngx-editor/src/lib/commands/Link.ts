@@ -86,7 +86,9 @@ class Link {
       href: '',
     };
 
-    return this.insert('Exec', testAttrs)(state) || this.update(testAttrs)(state);
+    return (
+      this.insert('Exec', testAttrs)(state) || this.update(testAttrs)(state)
+    );
   }
 }
 

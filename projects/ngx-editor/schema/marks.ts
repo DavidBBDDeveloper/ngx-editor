@@ -31,11 +31,7 @@ const link: MarkSpec = {
 // :: MarkSpec An emphasis mark. Rendered as an `<em>` element.
 // Has parse rules that also match `<i>` and `font-style: italic`.
 const em: MarkSpec = {
-  parseDOM: [
-    { tag: 'i' },
-    { tag: 'em' },
-    { style: 'font-style=italic' },
-  ],
+  parseDOM: [{ tag: 'i' }, { tag: 'em' }, { style: 'font-style=italic' }],
   toDOM() {
     return ['em', 0];
   },
@@ -69,9 +65,7 @@ const strong: MarkSpec = {
 
 // :: MarkSpec Code font mark. Represented as a `<code>` element.
 const code: MarkSpec = {
-  parseDOM: [
-    { tag: 'code' },
-  ],
+  parseDOM: [{ tag: 'code' }],
   toDOM() {
     return ['code', 0];
   },
@@ -147,10 +141,7 @@ const textBackgroundColor: MarkSpec = {
 
 const sup: MarkSpec = {
   attrs: {},
-  parseDOM: [
-    { tag: 'sup' },
-    { style: 'vertical-align=super' },
-  ],
+  parseDOM: [{ tag: 'sup' }, { style: 'vertical-align=super' }],
   toDOM() {
     return ['sup', 0];
   },
@@ -158,10 +149,7 @@ const sup: MarkSpec = {
 
 const sub: MarkSpec = {
   attrs: {},
-  parseDOM: [
-    { tag: 'sub' },
-    { style: 'vertical-align=sub' },
-  ],
+  parseDOM: [{ tag: 'sub' }, { style: 'vertical-align=sub' }],
   toDOM() {
     return ['sub', 0];
   },

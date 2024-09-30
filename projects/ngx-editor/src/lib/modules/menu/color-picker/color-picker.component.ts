@@ -1,6 +1,10 @@
 import {
-  Component, ElementRef,
-  HostListener, OnDestroy, Input, OnInit,
+  Component,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  Input,
+  OnInit,
 } from '@angular/core';
 import { EditorView } from 'prosemirror-view';
 import { Observable, Subscription } from 'rxjs';
@@ -25,14 +29,18 @@ export class ColorPickerComponent implements OnInit, OnDestroy {
     private el: ElementRef,
     private menuService: MenuService,
     private ngxeService: NgxEditorService,
-  ) { }
+  ) {}
 
   get title(): Observable<string> {
-    return this.getLabel(this.type === 'text_color' ? 'text_color' : 'background_color');
+    return this.getLabel(
+      this.type === 'text_color' ? 'text_color' : 'background_color',
+    );
   }
 
   get icon(): HTML {
-    return this.ngxeService.getIcon(this.type === 'text_color' ? 'text_color' : 'color_fill');
+    return this.ngxeService.getIcon(
+      this.type === 'text_color' ? 'text_color' : 'color_fill',
+    );
   }
 
   private get command(): Command {
@@ -51,11 +59,14 @@ export class ColorPickerComponent implements OnInit, OnDestroy {
     const r = parseInt(color.substring(0, 2), 16);
     const g = parseInt(color.substring(2, 4), 16);
     const b = parseInt(color.substring(4, 6), 16);
+    // prettier-ignore
     const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
     return yiq >= 128 ? 'black' : 'white';
   }
 
-  @HostListener('document:mousedown', ['$event']) onDocumentClick(e: MouseEvent): void {
+  @HostListener('document:mousedown', ['$event']) onDocumentClick(
+    e: MouseEvent,
+  ): void {
     if (!this.el.nativeElement.contains(e.target) && this.showPopup) {
       this.hidePopup();
     }
@@ -109,7 +120,7 @@ export class ColorPickerComponent implements OnInit, OnDestroy {
     return index;
   }
 
-  selectColor(color:string):void {
+  selectColor(color: string): void {
     const { state, dispatch } = this.editorView;
 
     if (this.type === 'text_color') {
@@ -159,9 +170,11 @@ export class ColorPickerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.editorView = this.menuService.editor.view;
 
-    this.updateSubscription = this.menuService.editor.update.subscribe((view: EditorView) => {
-      this.update(view);
-    });
+    this.updateSubscription = this.menuService.editor.update.subscribe(
+      (view: EditorView) => {
+        this.update(view);
+      },
+    );
   }
 
   ngOnDestroy(): void {

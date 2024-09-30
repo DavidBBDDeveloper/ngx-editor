@@ -13,7 +13,10 @@ class History implements InsertCommand {
   }
 
   insert(): Command {
-    return (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
+    return (
+      state: EditorState,
+      dispatch?: (tr: Transaction) => void,
+    ): boolean => {
       if (this.mode === 'undo') {
         return undo(state, dispatch);
       }

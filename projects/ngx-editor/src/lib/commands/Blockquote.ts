@@ -8,7 +8,10 @@ import { ToggleCommand } from './types';
 
 class Blockqote implements ToggleCommand {
   toggle(): Command {
-    return (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
+    return (
+      state: EditorState,
+      dispatch?: (tr: Transaction) => void,
+    ): boolean => {
       const { schema } = state;
 
       const type: NodeType = schema.nodes['blockquote'];

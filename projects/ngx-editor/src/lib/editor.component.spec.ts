@@ -1,7 +1,12 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 import Editor from './Editor';
 import { NgxEditorComponent } from './editor.component';
@@ -12,9 +17,7 @@ describe('NgxEditorComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [
-        NgxEditorComponent,
-      ],
+      declarations: [NgxEditorComponent],
     });
 
     await TestBed.compileComponents();
@@ -41,17 +44,23 @@ describe('NgxEditorComponent', () => {
   });
 
   it('should render the placeholder with no content', () => {
-    expect(fixture.debugElement.query(By.css('.NgxEditor__Placeholder'))).toBeTruthy();
+    expect(
+      fixture.debugElement.query(By.css('.NgxEditor__Placeholder')),
+    ).toBeTruthy();
   });
 
   it('should disable/enable the component via Froms API', () => {
     component.setDisabledState(true);
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.ProseMirror[contenteditable=false]'))).toBeTruthy();
+    expect(
+      fixture.debugElement.query(By.css('.ProseMirror[contenteditable=false]')),
+    ).toBeTruthy();
 
     component.setDisabledState(false);
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.ProseMirror[contenteditable=true]'))).toBeTruthy();
+    expect(
+      fixture.debugElement.query(By.css('.ProseMirror[contenteditable=true]')),
+    ).toBeTruthy();
   });
 
   it('should be able to reset the editor with FormsAPI', () => {
@@ -71,7 +80,7 @@ describe('EditorComponent: Reactive Forms API', () => {
       <form [formGroup]="form">
         <ngx-editor [editor]="editor" formControlName="content"></ngx-editor>
       </form>
-      `,
+    `,
   })
   class TestComponent {
     editor!: Editor;
@@ -90,13 +99,8 @@ describe('EditorComponent: Reactive Forms API', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [
-        ReactiveFormsModule,
-      ],
-      declarations: [
-        TestComponent,
-        NgxEditorComponent,
-      ],
+      imports: [ReactiveFormsModule],
+      declarations: [TestComponent, NgxEditorComponent],
     });
 
     await TestBed.compileComponents();

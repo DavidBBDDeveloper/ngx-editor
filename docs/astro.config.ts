@@ -38,7 +38,10 @@ export default defineConfig({
         {
           label: 'Examples',
           items: [
-            { label: 'Full Featured Editor', link: '/examples/full-featured-editor' },
+            {
+              label: 'Full Featured Editor',
+              link: '/examples/full-featured-editor',
+            },
             { label: 'History', link: '/examples/history' },
             { label: 'Input Rules', link: '/examples/input-rules' },
             { label: 'Shortcuts', link: '/examples/shortcuts' },
@@ -53,7 +56,10 @@ export default defineConfig({
         {
           label: 'Migrations',
           items: [
-            { label: 'From v4 or other editors to v5/v6', link: '/migrations/migration' },
+            {
+              label: 'From v4 or other editors to v5/v6',
+              link: '/migrations/migration',
+            },
             { label: 'v5 to v6', link: '/migrations/migration-5-6' },
             { label: 'v6 to v7', link: '/migrations/migration-6-7' },
             { label: 'v7 to v8', link: '/migrations/migration-7-8' },

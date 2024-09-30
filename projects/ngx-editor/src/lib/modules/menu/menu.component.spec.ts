@@ -55,14 +55,20 @@ describe('MenuComponent', () => {
 
   it('should position the dropdown correctly', () => {
     const compiled: DebugElement = fixture.debugElement;
-    expect(compiled.query(By.css('.NgxEditor__MenuBar.NgxEditor__MenuBar--Reverse'))).toBeFalsy();
+    expect(
+      compiled.query(By.css('.NgxEditor__MenuBar.NgxEditor__MenuBar--Reverse')),
+    ).toBeFalsy();
 
     component.dropdownPlacement = 'top';
     fixture.detectChanges();
-    expect(compiled.query(By.css('.NgxEditor__MenuBar.NgxEditor__MenuBar--Reverse'))).toBeTruthy();
+    expect(
+      compiled.query(By.css('.NgxEditor__MenuBar.NgxEditor__MenuBar--Reverse')),
+    ).toBeTruthy();
 
     component.dropdownPlacement = 'bottom';
     fixture.detectChanges();
-    expect(compiled.query(By.css('.NgxEditor__MenuBar.NgxEditor__MenuBar--Reverse'))).toBeFalsy();
+    expect(
+      compiled.query(By.css('.NgxEditor__MenuBar.NgxEditor__MenuBar--Reverse')),
+    ).toBeFalsy();
   });
 });

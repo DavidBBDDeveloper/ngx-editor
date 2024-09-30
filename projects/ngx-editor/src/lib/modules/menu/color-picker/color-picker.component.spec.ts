@@ -13,13 +13,9 @@ describe('ColorPickerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        ColorPickerComponent,
-        SanitizeHtmlPipe,
-      ],
+      declarations: [ColorPickerComponent, SanitizeHtmlPipe],
       providers: [MenuService],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

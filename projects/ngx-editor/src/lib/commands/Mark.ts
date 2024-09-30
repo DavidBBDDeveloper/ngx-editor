@@ -15,7 +15,10 @@ class Mark implements ToggleCommand {
   }
 
   apply(): Command {
-    return (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
+    return (
+      state: EditorState,
+      dispatch?: (tr: Transaction) => void,
+    ): boolean => {
       const { schema } = state;
 
       const type: MarkType = schema.marks[this.name];
@@ -28,7 +31,10 @@ class Mark implements ToggleCommand {
   }
 
   toggle(): Command {
-    return (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
+    return (
+      state: EditorState,
+      dispatch?: (tr: Transaction) => void,
+    ): boolean => {
       const { schema } = state;
 
       const type: MarkType = schema.marks[this.name];

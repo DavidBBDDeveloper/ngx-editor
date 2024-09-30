@@ -1,4 +1,9 @@
-import { ApplicationRef, ComponentRef, createComponent, Injector } from '@angular/core';
+import {
+  ApplicationRef,
+  ComponentRef,
+  createComponent,
+  Injector,
+} from '@angular/core';
 import { Node as ProseMirrorNode } from 'prosemirror-model';
 import { NodeSelection, Plugin, PluginKey } from 'prosemirror-state';
 import { EditorView, NodeView } from 'prosemirror-view';
@@ -18,7 +23,12 @@ class ImageRezieView implements NodeView {
   node: ProseMirrorNode;
   updating = false;
 
-  constructor(node: ProseMirrorNode, view: EditorView, getPos: () => number, injector: Injector) {
+  constructor(
+    node: ProseMirrorNode,
+    view: EditorView,
+    getPos: () => number,
+    injector: Injector,
+  ) {
     this.applicationRef = injector.get(ApplicationRef);
 
     // create component ref
@@ -42,7 +52,10 @@ class ImageRezieView implements NodeView {
     });
   }
 
-  private computeChanges(prevAttrs: Record<string, any>, newAttrs: Record<string, any>): boolean {
+  private computeChanges(
+    prevAttrs: Record<string, any>,
+    newAttrs: Record<string, any>,
+  ): boolean {
     return JSON.stringify(prevAttrs) === JSON.stringify(newAttrs);
   }
 
@@ -112,7 +125,11 @@ const imageResizePlugin = (injector: Injector): Plugin => {
     key: new PluginKey('image-resize'),
     props: {
       nodeViews: {
-        image: (node: ProseMirrorNode, view: EditorView, getPos: () => number) => {
+        image: (
+          node: ProseMirrorNode,
+          view: EditorView,
+          getPos: () => number,
+        ) => {
           return new ImageRezieView(node, view, getPos, injector);
         },
       },

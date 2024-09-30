@@ -107,7 +107,11 @@ class Editor {
   private createEditor(): void {
     const { options, schema } = this;
     const { content = null, nodeViews } = options;
-    const { history = true, keyboardShortcuts = true, inputRules = true } = options;
+    const {
+      history = true,
+      keyboardShortcuts = true,
+      inputRules = true,
+    } = options;
 
     const doc = parseContent(content, schema, options.parseOptions);
 
@@ -141,7 +145,11 @@ class Editor {
     const { state } = this.view;
     const { tr, doc } = state;
 
-    const newDoc = parseContent(content, this.schema, this.options.parseOptions);
+    const newDoc = parseContent(
+      content,
+      this.schema,
+      this.options.parseOptions,
+    );
 
     tr.replaceWith(0, state.doc.content.size, newDoc);
 

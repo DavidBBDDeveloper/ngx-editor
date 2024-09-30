@@ -1,4 +1,8 @@
-import { type EditorState, NodeSelection, type Command } from 'prosemirror-state';
+import {
+  type EditorState,
+  NodeSelection,
+  type Command,
+} from 'prosemirror-state';
 
 import { Dispatch } from './types';
 
@@ -24,7 +28,11 @@ class Image {
         ...attrs,
       };
 
-      if (!imageAttrs.width && selection instanceof NodeSelection && selection.node.type === type) {
+      if (
+        !imageAttrs.width
+        && selection instanceof NodeSelection
+        && selection.node.type === type
+      ) {
         imageAttrs.width = selection.node.attrs['width'];
       }
 
@@ -34,9 +42,7 @@ class Image {
         tr.selection.anchor - tr.selection.$anchor.nodeBefore.nodeSize,
       );
 
-      tr
-        .setSelection(new NodeSelection(resolvedPos))
-        .scrollIntoView();
+      tr.setSelection(new NodeSelection(resolvedPos)).scrollIntoView();
 
       if (tr.docChanged) {
         dispatch?.(tr);

@@ -1,7 +1,17 @@
 import {
-  Component, ElementRef, HostListener, Input, OnDestroy, OnInit,
+  Component,
+  ElementRef,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
 } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { EditorView } from 'prosemirror-view';
 import { Observable, Subscription } from 'rxjs';
 import { uniq } from '@davidbbddeveloper/ngx-editor/utils';
@@ -26,7 +36,10 @@ const DEFAULT_LINK_OPTIONS: LinkOptions = {
 })
 export class LinkComponent implements OnInit, OnDestroy {
   @Input({
-    transform: (value: Partial<LinkOptions>) => ({ ...DEFAULT_LINK_OPTIONS, ...value }),
+    transform: (value: Partial<LinkOptions>) => ({
+      ...DEFAULT_LINK_OPTIONS,
+      ...value,
+    }),
   })
     options: Partial<LinkOptions> = DEFAULT_LINK_OPTIONS;
 
@@ -50,7 +63,9 @@ export class LinkComponent implements OnInit, OnDestroy {
   }
 
   get title(): Observable<string> {
-    return this.ngxeService.locals.get(this.isActive ? 'removeLink' : 'insertLink');
+    return this.ngxeService.locals.get(
+      this.isActive ? 'removeLink' : 'insertLink',
+    );
   }
 
   get href(): AbstractControl {
@@ -61,7 +76,9 @@ export class LinkComponent implements OnInit, OnDestroy {
     return this.form.get('text');
   }
 
-  @HostListener('document:mousedown', ['$event']) onDocumentClick(e: MouseEvent): void {
+  @HostListener('document:mousedown', ['$event']) onDocumentClick(
+    e: MouseEvent,
+  ): void {
     if (!this.el.nativeElement.contains(e.target) && this.showPopup) {
       this.hidePopup();
     }
@@ -169,9 +186,11 @@ export class LinkComponent implements OnInit, OnDestroy {
       openInNewTab: new FormControl(true),
     });
 
-    this.updateSubscription = this.menuService.editor.update.subscribe((view: EditorView) => {
-      this.update(view);
-    });
+    this.updateSubscription = this.menuService.editor.update.subscribe(
+      (view: EditorView) => {
+        this.update(view);
+      },
+    );
   }
 
   ngOnDestroy(): void {

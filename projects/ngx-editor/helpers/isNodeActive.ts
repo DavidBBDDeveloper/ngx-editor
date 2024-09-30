@@ -11,7 +11,11 @@ const findNodeType = (type: NodeType, $from: ResolvedPos): NodeType | null => {
   return null;
 };
 
-export const isNodeActive = (state: EditorState, type: NodeType, attrs: any = {}): boolean => {
+export const isNodeActive = (
+  state: EditorState,
+  type: NodeType,
+  attrs: any = {},
+): boolean => {
   const { selection } = state;
   const { $from, to } = selection;
 

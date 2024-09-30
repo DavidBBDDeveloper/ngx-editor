@@ -46,7 +46,8 @@ describe('NgxEditorModule', () => {
   });
 
   it('should create the icon correctly', () => {
-    const element = fixture.debugElement.query(By.css('img')).nativeElement as HTMLImageElement;
+    const element = fixture.debugElement.query(By.css('img'))
+      .nativeElement as HTMLImageElement;
     expect(element.src).toBe('https://example.com/bold.png');
   });
 });

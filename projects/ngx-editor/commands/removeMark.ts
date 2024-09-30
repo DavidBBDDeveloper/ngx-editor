@@ -1,10 +1,18 @@
 import { MarkType } from 'prosemirror-model';
-import { EditorState, TextSelection, Transaction, type Command } from 'prosemirror-state';
+import {
+  EditorState,
+  TextSelection,
+  Transaction,
+  type Command,
+} from 'prosemirror-state';
 
 import { markApplies } from '@davidbbddeveloper/ngx-editor/helpers';
 
 export const removeMark = (type: MarkType): Command => {
-  return (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
+  return (
+    state: EditorState,
+    dispatch?: (tr: Transaction) => void,
+  ): boolean => {
     const { tr, selection, storedMarks, doc } = state;
     const { empty, ranges } = selection;
 

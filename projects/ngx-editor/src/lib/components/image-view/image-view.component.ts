@@ -1,6 +1,10 @@
 import {
-  Component, ElementRef, EventEmitter,
-  Input, Output, ViewChild,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
 } from '@angular/core';
 import { EditorView } from 'prosemirror-view';
 
@@ -9,7 +13,6 @@ import { EditorView } from 'prosemirror-view';
   templateUrl: './image-view.component.html',
   styleUrls: ['./image-view.component.scss'],
 })
-
 export class ImageViewComponent {
   @Input() src: string;
   @Input() alt = '';
@@ -39,7 +42,9 @@ export class ImageViewComponent {
     const onMouseMove = (e: MouseEvent) => {
       const currentX = e.pageX;
       const diffInPx = currentX - startX;
-      const computedWidth = isLeftResize ? startWidth - diffInPx : startWidth + diffInPx;
+      const computedWidth = isLeftResize
+        ? startWidth - diffInPx
+        : startWidth + diffInPx;
 
       // prevent image overflow the editor
       // prevent resizng below 20px

@@ -16,7 +16,10 @@ class Heading implements ToggleCommand {
   }
 
   apply(): Command {
-    return (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
+    return (
+      state: EditorState,
+      dispatch?: (tr: Transaction) => void,
+    ): boolean => {
       const { schema } = state;
 
       const type: NodeType = schema.nodes['heading'];
@@ -29,7 +32,10 @@ class Heading implements ToggleCommand {
   }
 
   toggle(): Command {
-    return (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
+    return (
+      state: EditorState,
+      dispatch?: (tr: Transaction) => void,
+    ): boolean => {
       const { schema, selection, doc } = state;
 
       const type: NodeType = schema.nodes['heading'];
@@ -46,7 +52,10 @@ class Heading implements ToggleCommand {
         return setBlockType(schema.nodes['paragraph'], attrs)(state, dispatch);
       }
 
-      return setBlockType(type, { ...attrs, level: this.level })(state, dispatch);
+      return setBlockType(type, { ...attrs, level: this.level })(
+        state,
+        dispatch,
+      );
     };
   }
 
@@ -59,7 +68,11 @@ class Heading implements ToggleCommand {
       return false;
     }
 
-    const supportedNodes = [type, schema.nodes['text'], schema.nodes['blockquote']];
+    const supportedNodes = [
+      type,
+      schema.nodes['text'],
+      schema.nodes['blockquote'],
+    ];
 
     // heading is a text node
     // don't mark as active when it has more nodes

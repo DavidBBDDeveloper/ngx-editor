@@ -13,7 +13,6 @@ import { HTML } from '../../../trustedTypesUtil';
   templateUrl: './toggle-command.component.html',
   styleUrls: ['./toggle-command.component.scss'],
 })
-
 export class ToggleCommandComponent implements OnInit, OnDestroy {
   @Input() toolbarItem: ToolbarItem;
 
@@ -30,7 +29,7 @@ export class ToggleCommandComponent implements OnInit, OnDestroy {
   constructor(
     private ngxeService: NgxEditorService,
     private menuService: MenuService,
-  ) { }
+  ) {}
 
   toggle(): void {
     const { state, dispatch } = this.editorView;
@@ -68,9 +67,11 @@ export class ToggleCommandComponent implements OnInit, OnDestroy {
 
     this.editorView = this.menuService.editor.view;
 
-    this.updateSubscription = this.menuService.editor.update.subscribe((view: EditorView) => {
-      this.update(view);
-    });
+    this.updateSubscription = this.menuService.editor.update.subscribe(
+      (view: EditorView) => {
+        this.update(view);
+      },
+    );
   }
 
   ngOnDestroy(): void {

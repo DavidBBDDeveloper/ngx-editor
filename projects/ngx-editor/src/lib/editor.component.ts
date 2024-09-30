@@ -37,7 +37,8 @@ import { HTML, isHtml } from './trustedTypesUtil';
   ],
   encapsulation: ViewEncapsulation.None,
 })
-export class NgxEditorComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
+export class NgxEditorComponent
+implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
   constructor(
     private renderer: Renderer2,
     private injector: Injector,
@@ -80,7 +81,11 @@ export class NgxEditorComponent implements ControlValueAccessor, OnInit, OnChang
 
   setDisabledState(isDisabled: boolean): void {
     this.setMeta('UPDATE_EDITABLE', !isDisabled);
-    this.renderer.setProperty(this.elementRef.nativeElement, 'disabled', isDisabled);
+    this.renderer.setProperty(
+      this.elementRef.nativeElement,
+      'disabled',
+      isDisabled,
+    );
   }
 
   private handleChange(jsonDoc: Record<string, any>): void {
@@ -139,16 +144,23 @@ export class NgxEditorComponent implements ControlValueAccessor, OnInit, OnChang
 
   ngOnInit(): void {
     if (!this.editor) {
-      throw new NgxEditorError('Required editor instance for initializing editor component');
+      throw new NgxEditorError(
+        'Required editor instance for initializing editor component',
+      );
     }
 
     this.registerPlugins();
 
-    this.renderer.appendChild(this.ngxEditor.nativeElement, this.editor.view.dom);
+    this.renderer.appendChild(
+      this.ngxEditor.nativeElement,
+      this.editor.view.dom,
+    );
 
-    this.editor.valueChanges.pipe(takeUntil(this.unsubscribe)).subscribe((jsonDoc) => {
-      this.handleChange(jsonDoc);
-    });
+    this.editor.valueChanges
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((jsonDoc) => {
+        this.handleChange(jsonDoc);
+      });
   }
 
   ngOnChanges(changes: SimpleChanges): void {

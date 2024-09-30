@@ -22,7 +22,11 @@ const isDocEmpty = (doc: ProseMirrorNode | null): boolean => {
   }
 
   const { childCount, firstChild } = doc;
-  return Boolean(childCount === 1 && firstChild?.isTextblock && firstChild.content.size === 0);
+  return Boolean(
+    childCount === 1
+      && firstChild?.isTextblock
+      && firstChild.content.size === 0,
+  );
 };
 
 // @dynamic
@@ -80,7 +84,8 @@ export class Validators {
       if (value.length < minLength) {
         return {
           minlength: {
-            requiredLength: minLength, actualLength: value.length,
+            requiredLength: minLength,
+            actualLength: value.length,
           },
         };
       }

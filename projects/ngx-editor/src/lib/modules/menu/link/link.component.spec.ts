@@ -13,10 +13,7 @@ describe('LinkComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        LinkComponent,
-        SanitizeHtmlPipe,
-      ],
+      declarations: [LinkComponent, SanitizeHtmlPipe],
       providers: [MenuService],
     }).compileComponents();
   });

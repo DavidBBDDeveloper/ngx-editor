@@ -24,7 +24,9 @@ const linkify = (fragment: Fragment): Fragment => {
 
         const urlText = text.slice(start, end);
         linkified.push(
-          child.cut(start, end).mark(link.create({ href: urlText }).addToSet(child.marks)),
+          child
+            .cut(start, end)
+            .mark(link.create({ href: urlText }).addToSet(child.marks)),
         );
         pos = end;
       }
@@ -40,12 +42,16 @@ const linkify = (fragment: Fragment): Fragment => {
   return Fragment.fromArray(linkified);
 };
 
-const linkifyPlugin = ():Plugin => {
+const linkifyPlugin = (): Plugin => {
   return new Plugin({
     key: new PluginKey('linkify'),
     props: {
       transformPasted: (slice: Slice) => {
-        return new Slice(linkify(slice.content), slice.openStart, slice.openEnd);
+        return new Slice(
+          linkify(slice.content),
+          slice.openStart,
+          slice.openEnd,
+        );
       },
     },
   });

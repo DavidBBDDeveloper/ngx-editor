@@ -1,6 +1,12 @@
 import { EditorState, Selection, Transaction } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
-import { chainCommands, createParagraphNear, liftEmptyBlock, newlineInCode, splitBlock } from 'prosemirror-commands';
+import {
+  chainCommands,
+  createParagraphNear,
+  liftEmptyBlock,
+  newlineInCode,
+  splitBlock,
+} from 'prosemirror-commands';
 import { DOMParser } from 'prosemirror-model';
 
 import { NgxEditorError } from '@davidbbddeveloper/ngx-editor/utils';
@@ -71,7 +77,9 @@ class EditorCommands {
   }
 
   focus(position: FocusPosition = 'end'): this {
-    const selection = position === 'start' ? Selection.atStart(this.state.doc) : Selection.atEnd(this.state.doc);
+    const selection = position === 'start'
+      ? Selection.atStart(this.state.doc)
+      : Selection.atEnd(this.state.doc);
 
     this.tr.setSelection(selection);
     this.applyTrx();
@@ -93,7 +101,12 @@ class EditorCommands {
   }
 
   insertNewLine(): this {
-    const newLineCommands = [newlineInCode, createParagraphNear, liftEmptyBlock, splitBlock];
+    const newLineCommands = [
+      newlineInCode,
+      createParagraphNear,
+      liftEmptyBlock,
+      splitBlock,
+    ];
     chainCommands(...newLineCommands)(this.state, this.dispatch);
     return this;
   }
@@ -239,7 +252,9 @@ class EditorCommands {
     const { from, to } = selection;
 
     const element = document.createElement('div');
-    element.innerHTML = isString(html) ? (html as string).trim() : (html as any);
+    element.innerHTML = isString(html)
+      ? (html as string).trim()
+      : (html as any);
     const slice = DOMParser.fromSchema(schema).parseSlice(element);
 
     const transaction = tr.replaceRange(from, to, slice);

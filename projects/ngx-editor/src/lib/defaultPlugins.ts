@@ -1,8 +1,17 @@
 import { MarkType, NodeType, Schema } from 'prosemirror-model';
 import { Plugin } from 'prosemirror-state';
 import { keymap } from 'prosemirror-keymap';
-import { toggleMark, baseKeymap, chainCommands, exitCode } from 'prosemirror-commands';
-import { splitListItem, liftListItem, sinkListItem } from 'prosemirror-schema-list';
+import {
+  toggleMark,
+  baseKeymap,
+  chainCommands,
+  exitCode,
+} from 'prosemirror-commands';
+import {
+  splitListItem,
+  liftListItem,
+  sinkListItem,
+} from 'prosemirror-schema-list';
 import { history, undo, redo } from 'prosemirror-history';
 import {
   inputRules,
@@ -70,9 +79,13 @@ const codeBlockRule = (nodeType: NodeType): InputRule => {
 // the start of a textblock into a heading whose level corresponds to
 // the number of `#` signs.
 const headingRule = (nodeType: NodeType, maxLevel: number): InputRule => {
-  return textblockTypeInputRule(new RegExp(`^(#{1,${maxLevel}})\\s$`), nodeType, (match) => ({
-    level: match[1].length,
-  }));
+  return textblockTypeInputRule(
+    new RegExp(`^(#{1,${maxLevel}})\\s$`),
+    nodeType,
+    (match) => ({
+      level: match[1].length,
+    }),
+  );
 };
 
 // : (MarkType) → InputRule
@@ -106,7 +119,10 @@ const buildInputRules = (schema: Schema): Plugin => {
   return inputRules({ rules });
 };
 
-export const getKeyboardShortcuts = (schema: Schema, options: ShortcutOptions) => {
+export const getKeyboardShortcuts = (
+  schema: Schema,
+  options: ShortcutOptions,
+) => {
   const historyKeyMap: Record<string, any> = {};
 
   historyKeyMap['Mod-z'] = undo;

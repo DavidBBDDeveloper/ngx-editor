@@ -14,11 +14,16 @@ class ListItem implements ToggleCommand {
   }
 
   getType(schema: Schema): NodeType {
-    return this.isBulletList ? schema.nodes['bullet_list'] : schema.nodes['ordered_list'];
+    return this.isBulletList
+      ? schema.nodes['bullet_list']
+      : schema.nodes['ordered_list'];
   }
 
   toggle(): Command {
-    return (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
+    return (
+      state: EditorState,
+      dispatch?: (tr: Transaction) => void,
+    ): boolean => {
       const { schema } = state;
 
       const type = this.getType(schema);

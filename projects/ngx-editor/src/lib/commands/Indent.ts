@@ -9,16 +9,28 @@ type IndentMethod = 'increase' | 'decrease';
 const minIndent = 0;
 const maxIndent = 10;
 
-const udpateIndentLevel = (tr: Transaction, pos: number, method: IndentMethod): boolean => {
+const udpateIndentLevel = (
+  tr: Transaction,
+  pos: number,
+  method: IndentMethod,
+): boolean => {
   const node = tr.doc.nodeAt(pos);
   if (!node) {
     return false;
   }
 
   const nodeIndent = node.attrs['indent'] ?? 0;
-  const newIndent = clamp(nodeIndent + (method === 'increase' ? 1 : -1), minIndent, maxIndent);
+  const newIndent = clamp(
+    nodeIndent + (method === 'increase' ? 1 : -1),
+    minIndent,
+    maxIndent,
+  );
 
-  if (newIndent === nodeIndent || newIndent < minIndent || newIndent > maxIndent) {
+  if (
+    newIndent === nodeIndent
+    || newIndent < minIndent
+    || newIndent > maxIndent
+  ) {
     return false;
   }
 
@@ -39,7 +51,10 @@ class Indent implements InsertCommand {
   }
 
   insert(): Command {
-    return (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
+    return (
+      state: EditorState,
+      dispatch?: (tr: Transaction) => void,
+    ): boolean => {
       const { tr, doc } = state;
       const { from, to } = tr.selection;
 

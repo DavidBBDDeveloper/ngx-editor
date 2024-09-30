@@ -1,5 +1,16 @@
-import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { NodeSelection } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
 import { Observable, Subscription } from 'rxjs';
@@ -24,7 +35,9 @@ export class ImageComponent implements OnInit, OnDestroy {
   form = new FormGroup({
     src: new FormControl('', [
       Validators.required,
-      Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/??([^#\n\r]*)?#?([^\n\r]*)'),
+      Validators.pattern(
+        '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/??([^#\n\r]*)?#?([^\n\r]*)',
+      ),
     ]),
     alt: new FormControl(''),
     title: new FormControl(''),
@@ -46,7 +59,9 @@ export class ImageComponent implements OnInit, OnDestroy {
     return this.form.get('src');
   }
 
-  @HostListener('document:mousedown', ['$event']) onDocumentClick(e: MouseEvent): void {
+  @HostListener('document:mousedown', ['$event']) onDocumentClick(
+    e: MouseEvent,
+  ): void {
     if (!this.el.nativeElement.contains(e.target) && this.showPopup) {
       this.hideForm();
     }
@@ -126,9 +141,11 @@ export class ImageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.editorView = this.menuService.editor.view;
 
-    this.updateSubscription = this.menuService.editor.update.subscribe((view: EditorView) => {
-      this.update(view);
-    });
+    this.updateSubscription = this.menuService.editor.update.subscribe(
+      (view: EditorView) => {
+        this.update(view);
+      },
+    );
   }
 
   ngOnDestroy(): void {

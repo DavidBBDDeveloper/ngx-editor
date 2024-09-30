@@ -1,4 +1,10 @@
-import { DOMSerializer, Schema, DOMParser, Node as ProseMirrorNode, ParseOptions } from 'prosemirror-model';
+import {
+  DOMSerializer,
+  Schema,
+  DOMParser,
+  Node as ProseMirrorNode,
+  ParseOptions,
+} from 'prosemirror-model';
 
 import defaultSchema from './schema';
 import { HTML, isHtml } from './trustedTypesUtil';
@@ -13,18 +19,27 @@ export const emptyDoc = {
 };
 
 // https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment
-export const toHTML = (json: Record<string, any>, inputSchema?: Schema): string => {
+export const toHTML = (
+  json: Record<string, any>,
+  inputSchema?: Schema,
+): string => {
   const schema = inputSchema ?? defaultSchema;
 
   const contentNode = schema.nodeFromJSON(json);
-  const html = DOMSerializer.fromSchema(schema).serializeFragment(contentNode.content);
+  const html = DOMSerializer.fromSchema(schema).serializeFragment(
+    contentNode.content,
+  );
 
   const div = document.createElement('div');
   div.appendChild(html);
   return div.innerHTML;
 };
 
-export const toDoc = (html: HTML, inputSchema?: Schema, options?:ParseOptions): Record<string, any> => {
+export const toDoc = (
+  html: HTML,
+  inputSchema?: Schema,
+  options?: ParseOptions,
+): Record<string, any> => {
   const schema = inputSchema ?? defaultSchema;
 
   const el = document.createElement('div');

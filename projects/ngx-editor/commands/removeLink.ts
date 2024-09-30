@@ -1,9 +1,16 @@
 import { EditorState, Transaction, type Command } from 'prosemirror-state';
 
 export const removeLink = (): Command => {
-  return (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
+  return (
+    state: EditorState,
+    dispatch?: (tr: Transaction) => void,
+  ): boolean => {
     const { doc, selection, tr, schema } = state;
-    const { $head: { pos }, from, to } = selection;
+    const {
+      $head: { pos },
+      from,
+      to,
+    } = selection;
 
     const linkMark = schema.marks['link'];
 

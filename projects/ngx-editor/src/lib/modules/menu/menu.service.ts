@@ -8,7 +8,9 @@ import Editor from '../../Editor';
 })
 export class MenuService {
   editor: Editor;
-  customMenuRefChange: Subject<TemplateRef<any>> = new Subject<TemplateRef<any>>();
+  customMenuRefChange: Subject<TemplateRef<any>> = new Subject<
+  TemplateRef<any>
+  >();
 
   setCustomMenuRef(c: TemplateRef<any>): void {
     this.customMenuRefChange.next(c);

@@ -15,10 +15,7 @@ import { SanitizeHtmlPipe } from '../../pipes/sanitize/sanitize-html.pipe';
 import { InsertCommandComponent } from './insert-command/insert-command.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, ReactiveFormsModule],
   declarations: [
     // pipes
     SanitizeHtmlPipe,
@@ -35,13 +32,7 @@ import { InsertCommandComponent } from './insert-command/insert-command.componen
     FloatingMenuComponent,
     BubbleComponent,
   ],
-  providers: [
-    SanitizeHtmlPipe,
-  ],
-  exports: [
-    MenuComponent,
-    FloatingMenuComponent,
-  ],
+  providers: [SanitizeHtmlPipe],
+  exports: [MenuComponent, FloatingMenuComponent],
 })
-
-export class MenuModule { }
+export class MenuModule {}

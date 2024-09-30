@@ -14,8 +14,7 @@ describe('DropdownComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [DropdownComponent],
       providers: [MenuService],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

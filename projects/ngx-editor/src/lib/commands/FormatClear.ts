@@ -6,7 +6,10 @@ const SAFE_MARKS = ['link'];
 
 class FormatClear implements InsertCommand {
   insert(): Command {
-    return (state: EditorState, dispatch?: (tr: Transaction) => void): boolean => {
+    return (
+      state: EditorState,
+      dispatch?: (tr: Transaction) => void,
+    ): boolean => {
       const { tr } = state;
       const { ranges, empty } = tr.selection;
 

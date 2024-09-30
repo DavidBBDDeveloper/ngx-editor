@@ -30,7 +30,11 @@ const placeholderPlugin = (text?: string): Plugin => {
         const decorations: Decoration[] = [];
 
         const decorate = (node: ProseMirrorNode, pos: number) => {
-          if (node.type.isBlock && node.childCount === 0 && textContent.length === 0) {
+          if (
+            node.type.isBlock
+            && node.childCount === 0
+            && textContent.length === 0
+          ) {
             const from = pos;
             const to = pos + node.nodeSize;
 

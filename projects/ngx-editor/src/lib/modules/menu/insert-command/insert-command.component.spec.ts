@@ -13,13 +13,9 @@ describe('InsertCommandComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        InsertCommandComponent,
-        SanitizeHtmlPipe,
-      ],
+      declarations: [InsertCommandComponent, SanitizeHtmlPipe],
       providers: [MenuService],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

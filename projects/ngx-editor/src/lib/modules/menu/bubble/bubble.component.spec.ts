@@ -12,8 +12,7 @@ describe('BubbleComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [BubbleComponent],
       providers: [SanitizeHtmlPipe],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
