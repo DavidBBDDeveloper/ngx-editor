@@ -54,6 +54,7 @@ const strong: MarkSpec = {
     {
       style: 'font-weight',
       getAttrs: (value: string) => {
+        // prettier-ignore
         return (/^(?:bold(?:er)?|[5-9]\d{2,})$/).test(value) && null;
       },
     },
@@ -155,6 +156,26 @@ const sub: MarkSpec = {
   },
 };
 
+const fontSize: MarkSpec = {
+  attrs: {
+    size: {
+      default: null,
+    },
+  },
+  parseDOM: [
+    {
+      style: 'font-size',
+      getAttrs: (value: string) => {
+        return { size: value };
+      },
+    },
+  ],
+  toDOM(mark: Mark) {
+    const { size } = mark.attrs;
+    return ['span', { style: `font-size:${size};` }, 0];
+  },
+};
+
 const marks = {
   link,
   em,
@@ -166,6 +187,7 @@ const marks = {
   text_background_color: textBackgroundColor,
   sup,
   sub,
+  font_size: fontSize,
 };
 
 export default marks;

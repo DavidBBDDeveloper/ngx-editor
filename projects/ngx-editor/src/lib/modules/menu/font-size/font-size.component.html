@@ -1,0 +1,13 @@
+<div class="NgxEditor__Input--Container">
+  <input
+    class="NgxEditor__Input"
+    type="number"
+    [value]="size"
+    (keyup.enter)="applySize()"
+    (blur)="applySize()"
+    (focus)="saveLastValue()"
+    (keyup.esc)="resetSize()"
+    (input)="onValueChange($event)"
+    min="1"
+  />
+</div>

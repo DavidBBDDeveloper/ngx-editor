@@ -5,6 +5,12 @@
   "projects": {
     "ngx-editor": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "standalone": false
+        }
+      },
       "root": "projects/ngx-editor",
       "sourceRoot": "projects/ngx-editor/src",
       "prefix": "lib",

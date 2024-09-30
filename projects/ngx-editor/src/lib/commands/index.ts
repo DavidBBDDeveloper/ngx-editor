@@ -10,6 +10,7 @@ import TextColor from './TextColor';
 import FormatClear from './FormatClear';
 import Indent from './Indent';
 import History from './History';
+import FontSize from './FontSize';
 
 export const STRONG = new Mark('strong');
 export const EM = new Mark('em');
@@ -38,6 +39,7 @@ export const TEXT_BACKGROUND_COLOR = new TextColor(
   'text_background_color',
   'backgroundColor',
 );
+export const FONT_SIZE = new FontSize();
 export const INDENT = new Indent('increase');
 export const OUTDENT = new Indent('decrease');
 export const SUPERSCRIPT = new Mark('sup');

@@ -36,7 +36,8 @@ export type TBItems =
   | 'superscript'
   | 'subscript'
   | 'undo'
-  | 'redo';
+  | 'redo'
+  | 'font_size';
 
 export type ToolbarDropdown = { heading?: TBHeadingItems[] };
 export type ToolbarLinkOptions = Partial<LinkOptions>;

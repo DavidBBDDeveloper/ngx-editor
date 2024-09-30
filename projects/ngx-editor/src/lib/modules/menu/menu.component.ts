@@ -12,6 +12,7 @@ import { MenuService } from './menu.service';
 import Editor from '../../Editor';
 
 export const DEFAULT_TOOLBAR: Toolbar = [
+  ['font_size'],
   ['bold', 'italic'],
   ['code', 'blockquote'],
   ['underline', 'strike'],
@@ -153,6 +154,7 @@ export class MenuComponent implements OnInit {
 
     // NOTE: it is not sufficient to check for a `link` property
     // as String.prototype.link is a valid (although deprecated) method
+    // prettier-ignore
     return (
       typeof item === 'object'
       && typeof (item as ToolbarLink)?.link === 'object'
@@ -162,6 +164,7 @@ export class MenuComponent implements OnInit {
   isLinkWithOptions(item: ToolbarItem): boolean {
     // NOTE: it is not sufficient to check for a `link` property
     // as String.prototype.link is a valid (although deprecated) method
+    // prettier-ignore
     return (
       typeof item === 'object'
       && typeof (item as ToolbarLink)?.link === 'object'

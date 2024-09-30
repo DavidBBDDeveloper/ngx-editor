@@ -81,6 +81,7 @@ $pointer-style: var(--ngx-editor-click-pointer, default);
   border-radius: $border-radius;
   border: 1px solid $editor-border-color;
   position: relative;
+  font-size: 16px;
 }
 
 .NgxEditor--Disabled {
@@ -158,6 +159,17 @@ $pointer-style: var(--ngx-editor-click-pointer, default);
   button:not(:disabled),
   [role='button']:not(:disabled) {
     cursor: $pointer-style;
+  }
+}
+
+.NgxEditor__MenuBar {
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
   }
 }
 
@@ -351,4 +363,18 @@ $pointer-style: var(--ngx-editor-click-pointer, default);
   &.NgxEditor__HelpText--Error {
     color: $error-color;
   }
+}
+
+.NgxEditor__Input--Container {
+  height: 100%;
+  width: 38px;
+}
+
+.NgxEditor__Input {
+  padding: $menubar-text-padding;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }

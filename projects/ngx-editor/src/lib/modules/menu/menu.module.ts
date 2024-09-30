@@ -10,6 +10,7 @@ import { ImageComponent } from './image/image.component';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
 import { FloatingMenuComponent } from './floating-menu/floating-menu.component';
 import { BubbleComponent } from './bubble/bubble.component';
+import { FontSizeComponent } from './font-size/font-size.component';
 
 import { SanitizeHtmlPipe } from '../../pipes/sanitize/sanitize-html.pipe';
 import { InsertCommandComponent } from './insert-command/insert-command.component';
@@ -28,6 +29,7 @@ import { InsertCommandComponent } from './insert-command/insert-command.componen
     DropdownComponent,
     ImageComponent,
     ColorPickerComponent,
+    FontSizeComponent,
 
     FloatingMenuComponent,
     BubbleComponent,
