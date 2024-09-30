@@ -1,8 +1,27 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit, ViewEncapsulation, isDevMode } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewEncapsulation,
+  isDevMode,
+} from '@angular/core';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
-import { Validators, Editor, Toolbar, DEFAULT_TOOLBAR, NgxEditorModule } from '@davidbbddeveloper/ngx-editor';
+import {
+  Validators,
+  Editor,
+  Toolbar,
+  DEFAULT_TOOLBAR,
+  NgxEditorModule,
+  toHTML,
+} from '@davidbbddeveloper/ngx-editor';
 
 import jsonDoc from './doc';
 import schema from './schema';
@@ -16,7 +35,14 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['app.component.scss'],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FormsModule, ReactiveFormsModule, NgxEditorModule, CustomMenuComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxEditorModule,
+    CustomMenuComponent,
+  ],
 })
 export class AppComponent implements OnInit, OnDestroy {
   isDevMode = isDevMode();
@@ -27,11 +53,18 @@ export class AppComponent implements OnInit, OnDestroy {
   toolbar: Toolbar = DEFAULT_TOOLBAR;
 
   form = new FormGroup({
-    editorContent: new FormControl({ value: jsonDoc, disabled: false }, Validators.required(schema)),
+    editorContent: new FormControl(
+      { value: jsonDoc, disabled: false },
+      Validators.required(schema),
+    ),
   });
 
   get doc(): AbstractControl {
     return this.form.get('editorContent');
+  }
+
+  get html(): string {
+    return toHTML(this.doc.value, schema);
   }
 
   ngOnInit(): void {

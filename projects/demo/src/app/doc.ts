@@ -166,7 +166,7 @@ export default {
                   type: 'em',
                 },
               ],
-              text: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',
+              text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
             },
             {
               type: 'text',
@@ -254,7 +254,7 @@ export default {
       content: [
         {
           type: 'text',
-          text: 'The content of the code editor is kept in sync with the content of the code block in the rich text editor, so that it is as if you\'re directly editing the outer document, using a more convenient interface.',
+          text: "The content of the code editor is kept in sync with the content of the code block in the rich text editor, so that it is as if you're directly editing the outer document, using a more convenient interface.",
         },
       ],
     },
