@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { EditorView } from 'prosemirror-view';
 import { Subscription } from 'rxjs';
 import { MenuService } from '../menu.service';
@@ -16,7 +22,15 @@ export class FontSizeComponent implements OnInit, OnDestroy {
   lastSize = 16;
   size = 16;
 
-  constructor(private menuService: MenuService) {}
+  isDropdownOpen = false;
+  defaultFontSizes = [
+    8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 48, 56, 64,
+  ];
+
+  constructor(
+    private menuService: MenuService,
+    private el: ElementRef,
+  ) {}
 
   applySize() {
     if (this.size < 1 || this.size > 999) {
@@ -60,6 +74,28 @@ export class FontSizeComponent implements OnInit, OnDestroy {
     } else {
       this.size = 16;
     }
+  }
+
+  trackByIndex(index: number): number {
+    return index;
+  }
+
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  @HostListener('document:mousedown', ['$event.target']) onDocumentClick(
+    target: Node,
+  ): void {
+    if (!this.el.nativeElement.contains(target) && this.isDropdownOpen) {
+      this.isDropdownOpen = false;
+    }
+  }
+
+  selectSize(s: number) {
+    this.size = s;
+    this.applySize();
+    this.toggleDropdown();
   }
 
   ngOnInit() {

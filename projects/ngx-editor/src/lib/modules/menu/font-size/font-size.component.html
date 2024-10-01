@@ -10,4 +10,31 @@
     (input)="onValueChange($event)"
     min="1"
   />
+  <button
+    class="NgxEditor__Input--Button"
+    (mousedown)="toggleDropdown()"
+    [ariaExpanded]="isDropdownOpen"
+    aria-haspopup="listbox"
+  >
+    &#9660;
+  </button>
+  <div
+    class="NgxEditor__Input--DropdownMenu"
+    *ngIf="isDropdownOpen"
+    role="listbox"
+  >
+    <button
+      type="button"
+      class="NgxEditor__Input--DropdownItem"
+      *ngFor="let defaultFontSize of defaultFontSizes; trackBy: trackByIndex"
+      [ngClass]="{
+        'NgxEditor__Input--DropdownItem--Active': defaultFontSize === size,
+      }"
+      role="option"
+      [attr.aria-selected]="defaultFontSize === size"
+      (click)="selectSize(defaultFontSize)"
+    >
+      {{ defaultFontSize }}
+    </button>
+  </div>
 </div>

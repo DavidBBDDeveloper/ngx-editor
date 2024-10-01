@@ -65,7 +65,7 @@ class FontSize {
     if (sizes.length === 0) {
       return DEFAULT_SIZE;
     } else if (sizes.length === 1) {
-      const index = 1;
+      const index = 0;
       const size = sizes[index];
       const sizeNumberString = size.replace('px', '');
       const sizeNumber = Number(sizeNumberString);

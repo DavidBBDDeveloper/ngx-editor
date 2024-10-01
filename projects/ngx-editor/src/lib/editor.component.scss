@@ -366,15 +366,67 @@ $pointer-style: var(--ngx-editor-click-pointer, default);
 }
 
 .NgxEditor__Input--Container {
+  position: relative;
   height: 100%;
-  width: 38px;
+  width: 48px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .NgxEditor__Input {
   padding: $menubar-text-padding;
   height: 100%;
   width: 100%;
-  border: 1px solid #ccc;
+  font-size: 14px;
+  padding-right: 18px;
+  border: none;
+}
+
+.NgxEditor__Input--Button {
+  @include button-reset;
+  background-color: #eee;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 14px;
+  height: calc(100% - 2px);
+  text-align: center;
+  font-size: 10px;
   border-radius: 4px;
-  box-sizing: border-box;
+
+  &:hover {
+    background-color: #ddd;
+  }
+}
+
+.NgxEditor__Input--DropdownMenu {
+  position: absolute;
+  left: 0;
+  box-shadow: $popup-shadow;
+  border-radius: $popup-border-radius;
+  background-color: $popup-bg-color;
+  z-index: 10;
+  width: 48px;
+  font-size: 14px;
+  top: calc(#{$menubar-height} + 2px);
+  display: flex;
+  flex-direction: column;
+}
+
+.NgxEditor__Input--DropdownItem {
+  @include button-reset;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  white-space: nowrap;
+  color: inherit;
+
+  &:hover {
+    background-color: $dropdown-item-hover-bg-color;
+  }
+
+  &.NgxEditor__Input--DropdownItem--Active {
+    background-color: $dropdown-item-hover-bg-color;
+  }
 }
