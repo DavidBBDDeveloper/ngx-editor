@@ -13,6 +13,12 @@ All notable changes to this project will be documented in this file.
 > - Documentation
 > - Internal
 
+## 18.0.2 (2024-10-01)
+
+#### Features
+
+- add menu component for select font size
+
 ## 18.0.0 (2024-09-01)
 
 #### Breaking Changes
